@@ -1,3 +1,4 @@
+/* eslint-disable-next-line react/no-unescaped-entities */
 import { Button } from "@/components/ui/button";
 import {FiDownload} from "react-icons/fi";
 import Socials from "@/components/ui/Socials";
