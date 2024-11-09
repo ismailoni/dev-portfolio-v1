@@ -2,20 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: JetBrains;
+  src: url(./JetBrainsMono-VariableFont_wght.ttf);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply font-[JetBrains]
+    bg-background
+    text-white
+    
   }
-}
+  .h1 {
+    @apply text-[48px] xl:text-[70px] leading-[1.1] font-semibold
+  }
+  .h2 {
+    @apply text-[30px] xl:text-[40px] leading-[1.1] font-semibold
+  }
+  .h3 {
+    @apply text-[16px] xl:text-[20px] leading-[1.1] font-semibold
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .links {
+    @apply block after:block after:content-[''] after:h-[3px] after:bg-accent
+     after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right
+  }
 }
