@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairEffect from "@/components/StairEffect";
+import AnimatedCursor from 'react-animated-cursor';
 
 const jetBrains_Mono = JetBrains_Mono({ 
   subsets: ["latin"], 
@@ -22,6 +23,18 @@ export default function RootLayout({ children }) {
       <body
         className={jetBrains_Mono.variable}
       >
+        <div className="hidden md:block">
+          <AnimatedCursor 
+          innerSize={8} 
+          outerSize={35} 
+          innerScale={2} 
+          outerScale={2} 
+          outerAlpha={0} 
+          innerStyle={{ backgroundColor: "white", }} 
+          outerStyle={{
+            border: '3px solid white',
+          }} />
+        </div>
         <Header />
         <StairEffect />
         <PageTransition>
