@@ -7,6 +7,9 @@
   src: url(./JetBrainsMono-VariableFont_wght.ttf);
 
 }
+:root {
+  --tw-shadow-color: bg-primary
+}
 
 @layer base {
   body {
