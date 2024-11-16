@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={jetBrains_Mono.variable}
       >
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <AnimatedCursor 
           innerSize={8} 
           outerSize={35} 
