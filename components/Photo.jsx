@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <div className="w-full h-full relative">
+    <div className="relative w-full h-full">
         <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 2, duration: 0.4, ease: 'easeIn'}}}>
             <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 2.4, duration: 0.4, ease: 'easeInOut'}}} className="w-[268px] h-[268px] xl:w-[398px] xl:h-[398px] mix-blend-lighten absolute">
                 <Image src='/hero.png' priority quality={100} fill alt="Hero" className="object-contain rounded-full"/>
