@@ -5,42 +5,46 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <div className="relative w-full h-full">
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 2, duration: 0.4, ease: 'easeIn'}}}>
-            <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 2.4, duration: 0.4, ease: 'easeInOut'}}} className="w-[268px] h-[268px] xl:w-[398px] xl:h-[398px] mix-blend-lighten absolute">
-                <Image src='/hero.png' priority quality={100} fill alt="Hero" className="object-contain rounded-full"/>
-            </motion.div>
+    <div className="relative mx-auto h-[320px] w-[320px] md:h-[380px] md:w-[380px] xl:h-[460px] xl:w-[460px]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.5 } }}
+          className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/30 via-transparent to-blue-500/20 blur-2xl"
+        />
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.25, duration: 0.45 } }}
+          className="absolute inset-[14%] z-10 overflow-hidden rounded-full border border-white/20 bg-white/5"
+        >
+          <Image src='/hero.png' priority quality={100} fill alt="Hero" className="object-cover"/>
         </motion.div>
 
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 2, duration: 0.4, ease: 'easeIn'}}}>
-          <motion.svg 
-            className='w-[270px] xl:w-[408px] h-[270px] xl:h-[408px]' 
-            fill='transparent' 
-            viewBox='0 0 506 506'
-            xmlns='http"//www.w3.org/2000/svg'
-          >
-            <motion.circle 
-              cx='253' 
-              cy='253' 
-              r='250' 
-              stroke="#00ff99"
-              strokeWidth={4}
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              initial={{strokeDasharray: '24 10 0 0'}}
-              animate={{
-                strokeDasharray: ['15 120 25 25', '16 25 92 72', '4 250 22 22'],
-                rotate: [120, 360],
-            
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: 'reverse',
-              }}
-            />
-          </motion.svg>
-        </motion.div>
+        <motion.svg
+          className='h-full w-full'
+          fill='transparent'
+          viewBox='0 0 506 506'
+          xmlns='http://www.w3.org/2000/svg'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.35 } }}
+        >
+          <motion.circle
+            cx='253'
+            cy='253'
+            r='240'
+            stroke="#13cf71"
+            strokeOpacity={0.85}
+            strokeWidth={3}
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            initial={{ strokeDasharray: '20 30 10 50' }}
+            animate={{
+              strokeDasharray: ['20 30 10 50', '50 18 30 18', '30 28 20 36'],
+              rotate: [0, 360],
+            }}
+            transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+          />
+        </motion.svg>
     </div>
   )
 }
