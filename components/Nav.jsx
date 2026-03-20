@@ -27,13 +27,22 @@ const links = [
 ]
 const Nav = () => {
     const pathname = usePathname()
-    console.log(pathname)
 
   return (
-    <nav className="flex gap-8">
+        <nav className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1">
         {links.map((link, i) => {
             return (
-                <Link href={link.url} key={i} className={`${link.url === pathname && 'text-accent after:content-normal after:h-[2px] after:bg-accent after:w-full after:scale-x-100 border-accent'} capitalize font-medium hover:text-accent transition-all links`}>{link.name}</Link>
+                                <Link
+                                    href={link.url}
+                                    key={i}
+                                    className={`rounded-full px-4 py-2 text-sm font-medium capitalize transition-all duration-300 ${
+                                        link.url === pathname
+                                            ? 'bg-accent text-primary'
+                                            : 'text-white/80 hover:bg-white/10 hover:text-white'
+                                    }`}
+                                >
+                                    {link.name}
+                                </Link>
             )
         })}
     </nav>

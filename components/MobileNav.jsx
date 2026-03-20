@@ -33,11 +33,11 @@ const MobileNav = () => {
 
   return (
     <Sheet>
-        <SheetTrigger className="flex justify-center items-center">
-            <CiMenuFries className="text-[32px] text-accent"/>
+        <SheetTrigger className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+            <CiMenuFries className="text-[26px] text-accent"/>
         </SheetTrigger>
-        <SheetContent className='flex flex-col'>
-            <div className="mt-32 mb-28 text-2xl">
+        <SheetContent className='flex flex-col bg-[#0e1221]'>
+            <div className="mb-14 mt-14 text-2xl">
                 <Link href='/'>
                     <h1 className='text-4xl font-semibold text-white'>
                         Ismail<span className='text-accent'>.</span>
@@ -45,10 +45,20 @@ const MobileNav = () => {
                 </Link>
             </div>
 
-            <nav className='flex flex-col justify-center items-center gap-8'>
+            <nav className='flex flex-col gap-3'>
                 {links.map((link, i) => {
                     return (
-                        <Link key={link.url} href={link.url} className={`${link.url === pathname && 'text-accent border-b-2 border-accent'} text-xl capitalize hover:text-accent transition-all `}>{link.name}</Link>
+                        <Link
+                          key={link.url}
+                          href={link.url}
+                          className={`rounded-xl px-4 py-3 text-lg capitalize transition-all ${
+                            link.url === pathname
+                              ? 'bg-accent text-primary'
+                              : 'bg-white/5 text-white/80 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
                     )
                 })}
             </nav>
