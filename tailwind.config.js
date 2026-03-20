@@ -22,11 +22,13 @@ module.exports = {
 	},
 	extend: {
 		colors: {
-			primary: '#1c1c22',
+				primary: '#0e1221',
 			accent: {
-				DEFAULT: '#13cf71'
+					DEFAULT: '#13cf71',
+					hover: '#0fbf67'
 			},
-			background: '#1c1c22',
+				background: '#090d18',
+				surface: '#141b2f',
 			foreground: 'var(--foreground)'
 		},
 		borderRadius: {

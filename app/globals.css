@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: JetBrains;
-  src: url(./JetBrainsMono-VariableFont_wght.ttf);
-
-}
 :root {
-  --tw-shadow-color: bg-primary
+  --background: 222 44% 8%;
+  --foreground: 210 40% 98%;
+  --muted: 217 25% 70%;
+  --accent: 160 84% 55%;
+  --accent-strong: 160 84% 48%;
 }
 
 @layer base {
-  body {
-    @apply font-[JetBrains]
-    bg-background
-    text-white
-    
-  }
-  .h1 {
-    @apply text-[48px] xl:text-[70px] leading-[1.1] font-semibold
-  }
-  .h2 {
-    @apply text-[30px] xl:text-[40px] leading-[1.1] font-semibold
-  }
-  .h3 {
-    @apply text-[16px] xl:text-[20px] leading-[1.1] font-semibold
+  * {
+    @apply border-white/10;
   }
 
-  .links {
-    @apply block after:block after:content-[''] after:h-[2px] after:bg-accent
-     after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right
+  html,
+  body {
+    @apply min-h-screen bg-background text-white antialiased;
   }
+
+  body {
+    background-image:
+      radial-gradient(circle at 12% 12%, rgba(19, 207, 113, 0.16), transparent 34%),
+      radial-gradient(circle at 88% 10%, rgba(78, 132, 255, 0.14), transparent 30%),
+      radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.14), transparent 30%);
+  }
+
+  .h1 {
+    @apply text-4xl font-bold leading-[1.05] md:text-6xl xl:text-7xl;
+  }
+
+  .h2 {
+    @apply text-3xl font-bold leading-tight md:text-5xl;
+  }
+
+  .h3 {
+    @apply text-lg font-semibold leading-tight md:text-xl;
+  }
+
+  .muted {
+    @apply text-white/70;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl;
+  }
+
+  .section-wrap {
+    @apply container mx-auto px-4 md:px-6;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply max-w-2xl text-sm text-white/70 md:text-base;
+  }
+
   .text-outline {
     -webkit-text-stroke: 1px #fff;
   }
+
   .text-outline-hover {
-    -webkit-text-stroke: 1px #00ff99;
+    -webkit-text-stroke: 1px #13cf71;
   }
 }
 
