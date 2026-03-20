@@ -19,31 +19,46 @@ import Stats from "@/components/Stats";
  
 
   return (
-    <section className="h-full">
-      <div className="container h-full mx-auto">
-        <div className="flex flex-col items-center justify-between xl:flex-row xl:pt-8 xl:pb-10">
-          <div className="order-2 text-center xl:text-left xl:order-none">
-            <span className="text-xl">Front-end Developer</span>
-            <h1 className="mb-6 h1">
-              Hello I&#39;m <br /> <span className="text-accent">Ismail Oni</span>
-            </h1>
-            <p className="max-w-[450px] mb-9 text-white/80">I specialize in crafting visually engaging and user-friendly web applications, bringing ideas to life with clean, efficient code.</p>
+      <section className="section-wrap">
+        <div className="grid items-center gap-10 pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:pt-16">
+            <div className="order-2 text-center lg:order-none lg:text-left">
+              <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-accent">
+                Frontend Developer
+              </span>
+              <h1 className="h1 mb-6 mt-6">
+                Designing Fast, Elegant <span className="text-accent">Web Experiences</span>
+              </h1>
+              <p className="mb-9 max-w-[560px] text-sm text-white/75 md:text-base lg:mx-0">
+                I help startups and teams build clean, conversion-ready interfaces with Next.js, React, and thoughtful interaction design.
+              </p>
 
-            {/* Button & Socials  */}
-            <div className="flex flex-col items-center gap-8 xl:flex-row"> 
-              <Button variant='outline' size='lg' className='flex items-center gap-2' onClick={handleDownloadCV}>
+              <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start"> 
+                <Button variant='default' size='lg' className='flex items-center gap-2' onClick={handleDownloadCV}>
                 <span>Download CV</span>
                 <FiDownload className="text-xl"/>
               </Button>
+                <Button asChild variant='primary' size='lg'>
+                  <a href='/contact'>Start a Project</a>
+                </Button>
               <div className="mb-8 xl:mb-0">
-                <Socials containerStyles='flex gap-6' iconStyles='w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500'/>
+                  <Socials containerStyles='flex gap-3' iconStyles='h-10 w-10 rounded-xl border border-white/15 bg-white/5 text-sm text-white/80 flex items-center justify-center transition-all duration-300 hover:border-accent hover:bg-accent hover:text-primary'/>
               </div>
             </div>
+
+              <div className='glass-card mt-8 grid max-w-[620px] gap-4 p-5 text-left sm:grid-cols-2'>
+                <div>
+                  <p className='text-xs uppercase tracking-wider text-white/50'>Focus</p>
+                  <p className='mt-1 text-sm font-semibold'>SaaS, dashboards, landing pages</p>
+                </div>
+                <div>
+                  <p className='text-xs uppercase tracking-wider text-white/50'>Location</p>
+                  <p className='mt-1 text-sm font-semibold'>Lagos, Nigeria • Remote Worldwide</p>
+                </div>
+              </div>
           </div>
-          <div className="order-1 mb-8 xl:order-none xl:mb-0">
+            <div className="order-1 mb-8 lg:order-none lg:mb-0">
             <Photo />
           </div>
-        </div>
       </div>
       <Stats />
     </section>
