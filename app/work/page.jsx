@@ -114,10 +114,10 @@ const projects = [
     stack:[ { name: 'Next.Js' }, { name: 'Express.Js' }, { name: 'PostgreSQL' }, { name: 'Stripe' }, { name: 'Clerk' }, {name: 'Cloudinary'}],
     image: '/work4.png',
     gallery: [
-      { src: '/work4.png', alt: 'Learning platform dashboard', label: 'Student dashboard', focus: 'top' },
-      { src: '/work3.png', alt: 'Course catalog preview', label: 'Course catalog', focus: 'center' },
-      { src: '/work2.png', alt: 'Student journey preview', label: 'Learning journey', focus: 'center' },
-      { src: '/hero.png', alt: 'Responsive learning platform preview', label: 'Responsive view', focus: 'center' },
+      { src: '/work4-1.png', alt: 'Learning platform dashboard', label: 'Student dashboard', focus: 'top' },
+      { src: '/work4-2.png', alt: 'Course catalog preview', label: 'Course catalog', focus: 'center' },
+      { src: '/work4-3.png', alt: 'Student journey preview', label: 'Learning journey', focus: 'center' },
+      { src: '/work4-4.png', alt: 'Responsive learning platform preview', label: 'Responsive view', focus: 'center' },
     ],
     live: 'https://ismail-lms.vercel.app/',
     github: 'https://github.com/ismailoni/lms'
