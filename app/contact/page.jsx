@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectGroup, SelectLabel, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import emailjs from '@emailjs/browser'
+import { useMemo, useState } from 'react'
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 
@@ -27,7 +29,96 @@ const info = [
 
 import { motion } from "framer-motion"
 
+const initialFormData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  service: '',
+  message: '',
+}
+
 const Contact = () => {
+  const [formData, setFormData] = useState(initialFormData)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [feedback, setFeedback] = useState({ type: '', message: '' })
+
+  const emailjsConfig = useMemo(
+    () => ({
+      serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+    }),
+    []
+  )
+
+  const handleInputChange = (field) => (event) => {
+    setFormData((current) => ({
+      ...current,
+      [field]: event.target.value,
+    }))
+  }
+
+  const handleServiceChange = (value) => {
+    setFormData((current) => ({
+      ...current,
+      service: value,
+    }))
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    if (!formData.firstName || !formData.email || !formData.service || !formData.message) {
+      setFeedback({
+        type: 'error',
+        message: 'Please fill in your first name, email, service, and message.',
+      })
+      return
+    }
+
+    if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
+      setFeedback({
+        type: 'error',
+        message: 'Email service is not configured yet. Add your EmailJS environment variables.',
+      })
+      return
+    }
+
+    setIsSubmitting(true)
+    setFeedback({ type: '', message: '' })
+
+    try {
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        {
+          from_name: `${formData.firstName} ${formData.lastName}`.trim(),
+          from_email: formData.email,
+          phone_number: formData.phone,
+          selected_service: formData.service,
+          message: formData.message,
+        },
+        {
+          publicKey: emailjsConfig.publicKey,
+        }
+      )
+
+      setFeedback({
+        type: 'success',
+        message: 'Message sent successfully. I will get back to you soon.',
+      })
+      setFormData(initialFormData)
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: 'Unable to send your message right now. Please try again.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <motion.section  
       initial={{opacity: 0}} 
@@ -43,35 +134,49 @@ const Contact = () => {
         <div className="flex flex-col gap-8 xl:flex-row xl:gap-10">
           {/* form  */}
           <div className="order-2 xl:order-none xl:flex-1">
-            <form className="glass-card flex flex-col gap-6 p-6 md:p-8">
+            <form className="glass-card flex flex-col gap-6 p-6 md:p-8" onSubmit={handleSubmit}>
               <h3 className="text-3xl font-bold text-accent">Let&#39;s work together</h3> 
               <p className="text-sm text-white/70">Need a reliable frontend partner for your startup, product, or redesign? Share the details below.</p>
 
               {/* input  */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type='firstname' placeholder='Firstname'/>
-                <Input type='lastname' placeholder='Lastname'/>
-                <Input type='email' placeholder='E-mail address'/>
-                <Input type='phone' placeholder='Phone number'/>
+                <Input type='text' placeholder='Firstname' value={formData.firstName} onChange={handleInputChange('firstName')} />
+                <Input type='text' placeholder='Lastname' value={formData.lastName} onChange={handleInputChange('lastName')} />
+                <Input type='email' placeholder='E-mail address' value={formData.email} onChange={handleInputChange('email')} />
+                <Input type='tel' placeholder='Phone number' value={formData.phone} onChange={handleInputChange('phone')} />
               </div>
               {/* select  */}
-              <Select>
+              <Select value={formData.service} onValueChange={handleServiceChange}>
                 <SelectTrigger className='w-full'>
                   <SelectValue placeholder='Select a service'/>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value='dev'>Web Development</SelectItem>
-                    <SelectItem value='host'>Web Hosting</SelectItem>
-                    <SelectItem value='des'>Logo Design</SelectItem>
+                    <SelectItem value='Web Development'>Web Development</SelectItem>
+                    <SelectItem value='Web Hosting'>Web Hosting</SelectItem>
+                    <SelectItem value='Logo Design'>Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* textarea  */}
-              <Textarea className='h-[200px]' placeholder='Type your message here..' /> 
+              <Textarea
+                className='h-[200px]'
+                placeholder='Type your message here..'
+                value={formData.message}
+                onChange={handleInputChange('message')}
+              />
+
+              {feedback.message && (
+                <p className={`text-sm ${feedback.type === 'success' ? 'text-accent' : 'text-red-400'}`}>
+                  {feedback.message}
+                </p>
+              )}
+
               {/* btn  */}
-              <Button size='md' className='max-w-44'>Send message</Button>
+              <Button size='md' className='max-w-44' type='submit' disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send message'}
+              </Button>
             </form>
           </div>
           {/* info */}
