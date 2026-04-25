@@ -48,7 +48,7 @@
   }
 
   .section-wrap {
-    @apply container mx-auto px-4 md:px-6;
+    @apply mx-auto px-4 md:px-6;
   }
 
   .section-title {

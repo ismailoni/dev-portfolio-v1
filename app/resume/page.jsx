@@ -1,6 +1,6 @@
 'use client'
 
-import { FaHtml5, FaCss3, FaJs, FaReact } from 'react-icons/fa';
+import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaWordpress, FaPhp } from 'react-icons/fa';
 import { SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -30,7 +30,7 @@ const experience = {
   items: [
     {
       company: 'Upwork',
-      position: 'Freelance Frontend Developer',
+      position: 'Freelance Fullstack Developer',
       duration: 'July 2024 - Present'
     },
     {
@@ -38,6 +38,11 @@ const experience = {
       position: 'Frontend Developer',
       duration: '2023 - September 2024'
     },
+    {
+      company: 'Halqatul Hikmah Madrasah',
+      position: 'Frontend Developer',
+      duration: 'October 2025 - Present'
+    }
   ]
 }
 
@@ -77,6 +82,9 @@ const skills = {
     { icon: <FaReact />, name: 'React.js' },
     { icon: <SiNextdotjs />, name: 'Next.js' },
     { icon: <SiTailwindcss />, name: 'Tailwind CSS' },
+    { icon: <FaNodeJs />, name: 'Node.js' },
+    { icon: <FaWordpress />, name: 'WordPress Theme Customization' },
+    { icon: <FaPhp />, name: 'PHP' }
   ]
 }
 
