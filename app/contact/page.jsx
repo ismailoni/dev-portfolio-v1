@@ -27,7 +27,7 @@ const info = [
   }
 ]
 
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 const initialFormData = {
   firstName: '',
@@ -41,7 +41,8 @@ const initialFormData = {
 const Contact = () => {
   const [formData, setFormData] = useState(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [feedback, setFeedback] = useState({ type: '', message: '' })
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
 
   const emailjsConfig = useMemo(
     () => ({
@@ -70,23 +71,17 @@ const Contact = () => {
     event.preventDefault()
 
     if (!formData.firstName || !formData.email || !formData.service || !formData.message) {
-      setFeedback({
-        type: 'error',
-        message: 'Please fill in your first name, email, service, and message.',
-      })
+      setErrorMessage('Please fill in your first name, email, service, and message.')
       return
     }
 
     if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
-      setFeedback({
-        type: 'error',
-        message: 'Email service is not configured yet. Add your EmailJS environment variables.',
-      })
+      setErrorMessage('Email service is not configured yet. Add your EmailJS environment variables.')
       return
     }
 
     setIsSubmitting(true)
-    setFeedback({ type: '', message: '' })
+    setErrorMessage('')
 
     try {
       await emailjs.send(
@@ -104,16 +99,10 @@ const Contact = () => {
         }
       )
 
-      setFeedback({
-        type: 'success',
-        message: 'Message sent successfully. I will get back to you soon.',
-      })
+      setIsSuccessModalOpen(true)
       setFormData(initialFormData)
     } catch (error) {
-      setFeedback({
-        type: 'error',
-        message: 'Unable to send your message right now. Please try again.',
-      })
+      setErrorMessage('Unable to send your message right now. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -167,11 +156,7 @@ const Contact = () => {
                 onChange={handleInputChange('message')}
               />
 
-              {feedback.message && (
-                <p className={`text-sm ${feedback.type === 'success' ? 'text-accent' : 'text-red-400'}`}>
-                  {feedback.message}
-                </p>
-              )}
+              {errorMessage && <p className='text-sm text-red-400'>{errorMessage}</p>}
 
               {/* btn  */}
               <Button size='md' className='max-w-44' type='submit' disabled={isSubmitting}>
@@ -199,6 +184,45 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isSuccessModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm'
+            onClick={() => setIsSuccessModalOpen(false)}
+            role='dialog'
+            aria-modal='true'
+            aria-label='Message sent successfully'
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 16, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.98 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              onClick={(event) => event.stopPropagation()}
+              className='glass-card w-full max-w-md p-6 md:p-7'
+            >
+              <p className='text-xs uppercase tracking-[0.2em] text-accent'>Submitted</p>
+              <h3 className='mt-2 text-2xl font-bold text-white'>Message sent successfully</h3>
+              <p className='mt-3 text-sm text-white/70'>Thanks for reaching out. I&apos;ll get back to you shortly.</p>
+
+              <div className='mt-6 flex justify-end'>
+                <Button
+                  type='button'
+                  size='md'
+                  className='max-w-32'
+                  onClick={() => setIsSuccessModalOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   )
 }
