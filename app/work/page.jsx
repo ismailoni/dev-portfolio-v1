@@ -18,25 +18,26 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: '01',
-    category: 'Frontend Project',
-    title: 'Marketing Website',
-    role: 'Frontend Developer & Motion Designer',
+    category: 'Fullstack Project',
+    title: 'Halqatul Hikmah LMS',
+    role: 'Frontend Developer',
     responsibilities: [
       'Built the responsive landing experience and reusable content sections.',
       'Created motion-rich UI interactions to guide users through the funnel.',
+      'Built the Admin dashboard and all associated features.',
+      'Built the teacher dashboard with all associated features.',
       'Optimized layout structure for SEO and fast load performance.',
     ],
-    description: 'Conversion-focused product marketing site with custom motion, reusable sections, and SEO-first architecture.',
-    stack: [{ name: 'HTML5' }, { name: 'CSS3' }, { name: 'JavaScript' }],
+    description: 'A modern learning management system for an Arabic school, featuring a responsive design and intuitive user interface.',
+    stack: [{ name: 'React' }, { name: 'Tailwind CSS' }, { name: 'Shadcn/UI' }, { name: 'Node.Js' }],
     image: '/work1.jpg',
     gallery: [
-      { src: '/work1.jpg', alt: 'Marketing website hero preview', label: 'Hero section', focus: 'center' },
-      { src: '/hero.png', alt: 'Marketing website brand preview', label: 'Brand spotlight', focus: 'top' },
-      { src: '/work2.png', alt: 'Secondary layout preview', label: 'Landing layout', focus: 'center' },
-      { src: '/work4.png', alt: 'Feature section preview', label: 'Feature grid', focus: 'center' },
+      { src: '/work1-1.png', alt: 'Website Landing', label: 'Landing', focus: 'center' },
+      { src: '/work1-2.png', alt: 'Admin Dashboard', label: 'Admin dashboard', focus: 'top' },
+      { src: '/work1-3.png', alt: 'Teacher Dashboard', label: 'Teacher dashboard', focus: 'center' },
+      { src: '/work1-4.png', alt: 'Admin Course preview', label: 'Course Preview', focus: 'center' },
     ],
-    live: '/',
-    github: '/'
+    live: 'https://halqahtulhikmah.org'
   },
   {
     num: '02',
@@ -55,10 +56,11 @@ const projects = [
     stack: [{ name: 'React' }, { name: 'Node.Js' }, { name: 'PostgreSQL' },],
     image: '/work3.png',
     gallery: [
-      { src: '/work3.png', alt: 'Haaflah event management dashboard', label: 'Dashboard overview', focus: 'top' },
-      { src: '/work1.jpg', alt: 'Event listing preview', label: 'Event catalog', focus: 'center' },
-      { src: '/work2.png', alt: 'Event registration preview', label: 'Registration flow', focus: 'center' },
-      { src: '/hero.png', alt: 'Project showcase preview', label: 'Landing banner', focus: 'center' },
+      { src: '/work2-1.png', alt: 'Haaflah event management Landing', label: 'Landing Page', focus: 'top' },
+      { src: '/work2-2.png', alt: 'Haaflah event management dashboard', label: 'Dashboard overview', focus: 'center' },
+      { src: '/work2-3.png', alt: 'Event management page', label: 'Event management', focus: 'center' },
+      { src: '/work2-4.png', alt: 'Event creation preview', label: 'Creation flow', focus: 'center' },
+      { src: '/work2-5.png', alt: 'Event Registration preview', label: 'Registration flow', focus: 'center' },
     ],
     live: 'https://haaflah.vercel.app/',
     github: 'https://github.com/ismailoni/haaflah-frontend'
@@ -66,15 +68,50 @@ const projects = [
   {
     num: '03',
     category: 'Fullstack Project',
-    title: "Ocean Academy's E-learning Platform",
-    role: 'Frontend Developer & UI Collaborator',
+    title: 'Nusy Wears Online Store',
+    role: 'Fullstack Developer',
     responsibilities: [
-      'Developed learner dashboards, course browsing screens, and responsive layouts.',
-      'Collaborated on interface structure to improve clarity and navigation.',
-      'Shaped the UI to support scalable educational content and student workflows.',
+      'Built a responsive e-commerce frontend with product browsing and filtering capabilities.',
+      'Designed and implemented a modern shopping cart and checkout experience.',
+      'Integrated Paystack payment gateway for secure online transactions.',
+      'Implemented Firebase authentication for Admin login.',
+      'Built admin dashboard for inventory and order management.',
+      'Optimized app performance with React Query for efficient data fetching and caching.',
+    ],
+    description: 'An online store for selling fashion items, featuring a modern design and seamless shopping experience.',
+    stack: [{ name: 'React' }, { name: 'React Query' }, { name: 'Firebase Auth' }, { name: 'Firestore' }, { name: 'Paystack' }],
+    image: '/work5.png',
+    gallery: [
+      { src: '/work3-1.png', alt: 'Nusy Wears Landing', label: 'Landing Page', focus: 'top' },
+      { src: '/work3-2.png', alt: 'Nusy Wears Shop', label: 'Product Catalog', focus: 'center' },
+      { src: '/work3-3.png', alt: 'Nusy Wears Product View', label: 'Product View', focus: 'center' },
+      { src: '/work3-4.png', alt: 'Nusy Wears Cart', label: 'Shopping Cart', focus: 'center' },
+      { src: '/work3-5.png', alt: 'Nusy Wears Checkout', label: 'Checkout Process', focus: 'center' },
+      { src: '/work3-6.png', alt: 'Nusy Wears Order Tracking', label: 'Order Tracking', focus: 'center' },
+      { src: '/work3-7.png', alt: 'Nusy Wears Admin Dashboard', label: 'Admin Dashboard', focus: 'center' },
+      { src: '/work3-8.png', alt: 'Nusy Wears Admin Order Management', label: 'Admin Dashboard', focus: 'center' },
+      { src: '/work3-9.png', alt: 'Nusy Wears Admin Delivery Management', label: 'Admin Dashboard', focus: 'center' },
+      { src: '/work3-10.png', alt: 'Nusy Wears Admin Payment Management', label: 'Admin Dashboard', focus: 'center' },
+    ],
+    live: 'https://nusy-wears-web.vercel.app/',
+    github: 'https://github.com/ismailoni/nusy-wears-web'
+  },
+  {
+    num: '04',
+    category: 'Fullstack Project',
+    title: "Susu Academy's E-learning Platform",
+    role: 'Fullstack Developer',
+    responsibilities: [
+      'Built a comprehensive e-learning platform with student and instructor dashboards.',
+      'Implemented course creation, management, and enrollment workflows.',
+      'Integrated Stripe payment gateway for course purchases and subscription handling.',
+      'Designed and built responsive UI components using modern React patterns.',
+      'Set up Clerk authentication for secure user management and role-based access.',
+      'Integrated Cloudinary for efficient media upload and optimization.',
+      'Optimized database queries and implemented caching strategies for better performance.',
     ],
     description: 'An e-learning platform designed to provide comprehensive educational resources and interactive learning experiences for students of all ages.',
-    stack:[ { name: 'Next.Js' }, { name: 'Express.Js' }, { name: 'PostgreSQL' },],
+    stack:[ { name: 'Next.Js' }, { name: 'Express.Js' }, { name: 'PostgreSQL' }, { name: 'Stripe' }, { name: 'Clerk' }, {name: 'Cloudinary'}],
     image: '/work4.png',
     gallery: [
       { src: '/work4.png', alt: 'Learning platform dashboard', label: 'Student dashboard', focus: 'top' },
@@ -84,12 +121,14 @@ const projects = [
     ],
     live: 'https://ismail-lms.vercel.app/',
     github: 'https://github.com/ismailoni/lms'
-  }
+  },
+
 ]
 
 const Work = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [isPrivateRepoModalOpen, setIsPrivateRepoModalOpen] = useState(false);
 
   const project = projects[activeIndex];
 
@@ -179,11 +218,20 @@ const Work = () => {
     });
   };
 
+  const handleGithubClick = () => {
+    if (project.github) {
+      window.open(project.github, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    setIsPrivateRepoModalOpen(true);
+  };
+
   return (
     <motion.section 
       initial={{opacity: 0}} 
       animate={{opacity: 1, transition: {duration: 0.4, ease: 'easeIn'}}}
-      className="section-wrap py-12 md:py-16"
+      className="section-wrap py-16"
     >
       <div>
         <div className='mb-10'>
@@ -198,6 +246,8 @@ const Work = () => {
               {/* Category  */}
               <h3 className="text-3xl font-bold capitalize leading-tight md:text-5xl">{project.title}</h3>
               <p className='-mt-4 text-accent'>{project.category}</p>
+                {/* Description  */}
+              <p className="text-white/70">{project.description}</p>
               <div className="glass-card space-y-3 p-4">
                 <div>
                   <p className='text-xs uppercase tracking-[0.22em] text-white/45'>My role</p>
@@ -212,8 +262,6 @@ const Work = () => {
                   ))}
                 </ul>
               </div>
-              {/* Description  */}
-              <p className="text-white/70">{project.description}</p>
               {/* stack  */}
               <ul className="flex flex-wrap gap-3">
                 {project.stack.map((item, i) => (
@@ -241,16 +289,18 @@ const Work = () => {
                 </Link>
 
                 {/* github button  */}
-                <Link href={project.github} target="_blank">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 transition-all hover:bg-accent">
-                        <BsGithub className="text-2xl text-white group-hover:text-primary"/>
-                      </TooltipTrigger>
-                      <TooltipContent>Github repository</TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger
+                      type="button"
+                      onClick={handleGithubClick}
+                      className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 transition-all hover:bg-accent"
+                    >
+                      <BsGithub className="text-2xl text-white group-hover:text-primary"/>
+                    </TooltipTrigger>
+                    <TooltipContent>{project.github ? 'Github repository' : 'Repository is private'}</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
           </div>
@@ -405,6 +455,35 @@ const Work = () => {
                   Next
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isPrivateRepoModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setIsPrivateRepoModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Repository privacy notice"
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-white/10 bg-[#0e1221] p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h3 className="text-xl font-semibold text-white">Repository is private</h3>
+            <p className="mt-3 text-sm text-white/70">
+              This project repository isn&apos;t publicly available right now.
+            </p>
+            <div className="mt-5 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setIsPrivateRepoModalOpen(false)}
+                className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 transition-all hover:border-accent hover:bg-accent hover:text-primary"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
