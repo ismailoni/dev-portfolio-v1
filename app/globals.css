@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.js";
+@import "tailwindcss";
 
 :root {
   --background: 222 44% 8%;
@@ -68,3 +67,70 @@
   }
 }
 
+
+/* ------------------------------------------------------------------ */
+/* 3D world                                                            */
+/* ------------------------------------------------------------------ */
+
+/* the 3D scene paints the background; keep the body gradient only as a pre-load / no-WebGL fallback */
+canvas {
+  display: block;
+  outline: none;
+}
+
+/* Semantic mirror of each 3D page: hidden visually, available to crawlers + screen readers */
+.a11y-mirror {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* …and it becomes the visible page when WebGL is unavailable */
+html.no-webgl .overlay {
+  pointer-events: auto;
+}
+html.no-webgl .site-header {
+  position: sticky;
+}
+html.no-webgl .a11y-mirror {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  padding: 3rem 1rem 5rem;
+  max-width: 64rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+html.no-webgl .a11y-mirror h1 {
+  @apply mb-4 text-4xl font-bold md:text-5xl;
+}
+html.no-webgl .a11y-mirror h2 {
+  @apply mb-3 mt-10 text-2xl font-bold text-accent;
+}
+html.no-webgl .a11y-mirror h3 {
+  @apply mb-1 mt-6 text-lg font-semibold;
+}
+html.no-webgl .a11y-mirror p,
+html.no-webgl .a11y-mirror li {
+  @apply text-white/75;
+}
+html.no-webgl .a11y-mirror ul {
+  @apply mb-4 ml-5 list-disc space-y-1;
+}
+html.no-webgl .a11y-mirror a {
+  @apply text-accent underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

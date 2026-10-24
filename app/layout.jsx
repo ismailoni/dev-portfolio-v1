@@ -1,7 +1,7 @@
 import {JetBrains_Mono} from 'next/font/google';
 import "./globals.css";
 import Header from "../components/Header";
-import PageTransition from "@/components/PageTransition";
+import Experience from "@/components/three/Experience";
 
 const jetBrains_Mono = JetBrains_Mono({ 
   subsets: ["latin"], 
@@ -71,11 +71,14 @@ export default function RootLayout({ children }) {
       <body
         className={jetBrains_Mono.variable}
       >
-        <div className="relative min-h-screen">
+        {/* The persistent 3D world. Routes are stations the camera flies between. */}
+        <Experience />
+
+        {/* DOM layer on top of the canvas. It lets pointer events fall through to the 3D scene;
+            anything interactive (header, contact form, drawers) opts back in with pointer-events-auto. */}
+        <div className="overlay pointer-events-none relative z-10 min-h-screen">
           <Header />
-          <PageTransition>
-            <main className="pt-8 pb-14 md:pt-12 md:pb-20">{children}</main>
-          </PageTransition>
+          <main>{children}</main>
         </div>
       </body>
     </html>
