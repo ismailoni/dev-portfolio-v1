@@ -1,6 +1,7 @@
 import {JetBrains_Mono} from 'next/font/google';
 import "./globals.css";
 import Header from "../components/Header";
+import AnimatedCursor from "../components/AnimatedCursor";
 import Experience from "@/components/three/Experience";
 
 const jetBrains_Mono = JetBrains_Mono({ 
@@ -71,6 +72,7 @@ export default function RootLayout({ children }) {
       <body
         className={jetBrains_Mono.variable}
       >
+        <AnimatedCursor />
         {/* The persistent 3D world. Routes are stations the camera flies between. */}
         <Experience />
 

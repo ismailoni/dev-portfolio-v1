@@ -96,8 +96,8 @@ const Contact = () => {
 
   return (
     <motion.section
-      initial={{opacity: 0}}
-      animate={{opacity: 1, transition: {duration: 0.4, ease: 'easeIn'}}}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0, transition: { delay: 2.05, duration: 0.75, ease: 'easeOut' } }}
       className="section-wrap pb-20 pt-[40vh] xl:pb-12 xl:pt-10"
     >
       {/* The 3D beacon (components/three/ContactStation.jsx) shows through the open area on the left / top. */}
